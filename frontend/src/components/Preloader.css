@@ -1,0 +1,39 @@
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 50% 40%, #12335A, #06121F 70%);
+  transition: transform 0.8s cubic-bezier(0.77, 0, 0.18, 1);
+}
+.preloader--leave { transform: translateY(-100%); }
+
+.preloader__mark { position: relative; width: 96px; height: 96px; display: grid; place-items: center; margin-bottom: 1.5rem; }
+.preloader__mark svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.preloader__mark rect {
+  fill: none;
+  stroke: var(--teal);
+  stroke-width: 2.5;
+  stroke-dasharray: 320;
+  stroke-dashoffset: 320;
+  animation: draw 1.2s 0.1s ease forwards;
+}
+.preloader__mark span {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 2rem;
+  color: var(--white);
+  opacity: 0;
+  animation: pre-fade 0.6s 0.7s ease forwards;
+}
+.preloader__name { font-family: var(--font-heading); font-weight: 700; font-size: 1.3rem; color: var(--white); opacity: 0; animation: pre-fade 0.6s 0.9s ease forwards; }
+.preloader__sub { color: #7FD6D1; font-size: 0.9rem; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0; animation: pre-fade 0.6s 1s ease forwards; }
+.preloader__bar { width: 180px; height: 3px; margin-top: 2rem; background: rgba(255, 255, 255, 0.12); border-radius: 3px; overflow: hidden; }
+.preloader__bar span { display: block; height: 100%; background: linear-gradient(90deg, var(--blue), var(--teal)); transform-origin: left; transform: scaleX(0); animation: fill 1.5s 0.1s ease forwards; }
+
+@keyframes draw { to { stroke-dashoffset: 0; } }
+@keyframes pre-fade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@keyframes fill { to { transform: scaleX(1); } }

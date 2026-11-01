@@ -1,0 +1,18 @@
+.cursor-glow, .cursor-ring { position: fixed; top: 0; left: 0; pointer-events: none; }
+.cursor-glow {
+  z-index: 5;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(22, 119, 210, 0.13), rgba(24, 167, 161, 0.05) 45%, transparent 70%);
+}
+.cursor-ring {
+  z-index: 300;
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid rgba(24, 167, 161, 0.9);
+  border-radius: 50%;
+  transition: width 0.25s, height 0.25s, margin 0.25s, background 0.25s;
+}
+.cursor-ring--active { width: 56px; height: 56px; margin: -10px 0 0 -10px; background: rgba(24, 167, 161, 0.15); }
+@media (hover: none) { .cursor-glow, .cursor-ring { display: none; } }

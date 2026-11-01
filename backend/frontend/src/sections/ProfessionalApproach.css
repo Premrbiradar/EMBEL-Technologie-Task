@@ -1,0 +1,52 @@
+.approach__steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+
+.approach__step {
+  position: relative;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2.25rem 1.75rem 2rem;
+  text-align: center;
+}
+/* connector line between the cards on desktop */
+.approach__step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 3.6rem;
+  left: 100%;
+  width: 2rem;
+  border-top: 2px dashed var(--teal);
+}
+
+.approach__icon {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 1.25rem;
+  border-radius: 50%;
+  background: var(--navy);
+  color: #7FD6D1;
+}
+.approach__step h3 { font-size: 1.3rem; margin-bottom: 0.6rem; }
+.approach__number { display: block; font-size: 0.85rem; font-weight: 600; color: var(--teal); margin-bottom: 0.2rem; }
+
+@media (max-width: 900px) {
+  .approach__steps { grid-template-columns: 1fr; gap: 1.5rem; }
+  .approach__step:not(:last-child)::after { display: none; }
+}
+
+.approach__step { transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition); }
+.approach__step:hover { transform: translateY(-8px); box-shadow: var(--shadow); border-color: var(--teal); }
+.approach__step:not(:last-child)::after { border-top-color: var(--teal); animation: dash-flow 1s linear infinite; background: none; }
+.approach__icon { position: relative; background: linear-gradient(135deg, var(--blue), var(--teal)); color: var(--white); }
+.approach__icon::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid var(--teal);
+  animation: ring 2.4s ease-out infinite;
+}
+@keyframes ring { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(1.6); opacity: 0; } }
+@keyframes dash-flow { to { opacity: 0.4; } }

@@ -1,0 +1,77 @@
+.featured { position: relative; }
+.featured__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+
+.featured h2 { font-size: clamp(1.9rem, 3.4vw, 2.6rem); margin-bottom: 1rem; }
+.featured__text { font-size: 1.125rem; max-width: 52ch; margin-bottom: 2.25rem; }
+
+.featured__blocks li {
+  display: flex;
+  gap: 1rem;
+  padding: 1.2rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+.featured__blocks li:last-child { border-bottom: 1px solid rgba(255, 255, 255, 0.12); }
+.featured__icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius);
+  background: rgba(24, 167, 161, 0.15);
+  color: #7FD6D1;
+}
+.featured__blocks h3 { font-size: 1.1rem; margin-bottom: 0.2rem; }
+.featured__blocks p { font-size: 1rem; }
+
+.featured__figure img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.35);
+}
+.featured__figure figcaption { margin-top: 0.9rem; font-size: 0.9rem; color: #94A5B8; }
+
+@media (max-width: 900px) {
+  .featured__grid { grid-template-columns: 1fr; gap: 2.5rem; }
+}
+
+/* animated glow + slow image zoom */
+.featured { overflow: hidden; background: linear-gradient(160deg, #07162A, var(--navy-2)); }
+.featured::before {
+  content: '';
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  left: -180px;
+  top: -200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(22, 119, 210, 0.35), transparent 70%);
+  animation: float 12s ease-in-out infinite;
+}
+.featured__grid { position: relative; }
+.featured__figure { position: relative; }
+.featured__figure::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 10px;
+  background: linear-gradient(120deg, var(--blue), var(--teal), var(--blue));
+  background-size: 300% 300%;
+  animation: shimmer-box 7s linear infinite;
+  opacity: 0.8;
+}
+.featured__figure img { position: relative; border: none; transition: transform 0.6s ease; }
+.featured__figure { overflow: visible; }
+.featured__figure:hover img { transform: scale(1.02); }
+.featured__blocks li { transition: transform var(--transition), background var(--transition); padding-inline: 0.75rem; border-radius: var(--radius); }
+.featured__blocks li:hover { transform: translateX(8px); background: rgba(255, 255, 255, 0.05); }
+.featured__icon { background: linear-gradient(135deg, var(--blue), var(--teal)); color: var(--white); }
+
+/* Round 4: parallax photo */
+.featured__media { position: relative; overflow: hidden; border-radius: 8px; }
+.featured__figure img { transform: translateY(calc(var(--py, 0) * 1px)) scale(1.16); transition: none; border-radius: 0; }
+.featured__figure:hover img { transform: translateY(calc(var(--py, 0) * 1px)) scale(1.2); }

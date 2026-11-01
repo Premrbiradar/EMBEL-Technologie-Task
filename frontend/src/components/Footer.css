@@ -1,0 +1,32 @@
+.footer { background: var(--navy); color: #AEBCCB; padding-top: 4rem; font-size: 0.98rem; }
+.footer__grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; }
+
+.footer__brand { display: flex; align-items: center; gap: 0.9rem; margin-bottom: 1.1rem; }
+.footer__mark {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+  border: 2px solid var(--teal);
+  border-radius: var(--radius);
+  font-family: var(--font-heading);
+  font-weight: 800;
+  color: var(--teal);
+}
+.footer__name { font-family: var(--font-heading); font-weight: 700; font-size: 1.15rem; color: var(--white); line-height: 1.3; }
+.footer__role { font-size: 0.9rem; }
+.footer__about p:last-child { max-width: 420px; }
+
+.footer__heading { font-size: 1rem; color: var(--white); margin-bottom: 1rem; }
+.footer li { margin-bottom: 0.5rem; }
+.footer a { transition: color var(--transition); }
+.footer li a:hover, .footer__linkedin:hover { color: var(--teal); }
+.footer__linkedin { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--white); font-weight: 600; }
+.footer__location { margin-top: 0.8rem; }
+
+.footer__bottom { border-top: 1px solid rgba(255, 255, 255, 0.1); padding: 1.25rem 0; font-size: 0.9rem; }
+
+@media (max-width: 860px) {
+  .footer__grid { grid-template-columns: 1fr; gap: 2rem; }
+}
